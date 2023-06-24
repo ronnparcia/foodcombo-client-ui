@@ -1,0 +1,33 @@
+.container {
+    width: 500px; /* Override */
+}
+
+div.box > table {
+    margin-bottom: 10px;
+}
+
+div.box > table td:first-child {
+    display: flex;
+    align-items: center;
+}
+
+input[type="number"] {
+    width: 80px;
+    /* padding: 4px; */
+    margin-left: 10px;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+.clickable {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.item-image {
+    width: 60px;
+    margin-right: 20px;
+}
+

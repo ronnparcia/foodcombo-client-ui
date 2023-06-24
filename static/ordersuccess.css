@@ -1,0 +1,7 @@
+.container {
+    width: 400px; /* Override */
+}
+
+#payment-summary > table {
+    width: 100%;
+}

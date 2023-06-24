@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <title>Order Placed</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='ordersuccess.css') }}">
+</head>
+
+<body>
+    <header>
+        <img src="https://raw.githubusercontent.com/ronnparcia/itprog-mp-icons/main/logo.png" class="header-logo">
+        foodcombo
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">Transaction successful!<br/>Your order is in the kitchen.</h1>
+
+        <div class="box" id="payment-summary">
+            <h2 class="box-title">Payment Summary:</h2>
+
+            <table>
+                <tr>
+                    <td>Order Number:</td>
+                    <td class="text-right">{{ orderID }}</td>
+                </tr>
+                <tr>
+                    <td>Amount Due:</td>
+                    <td class="text-right">Php {{ discountedTotalPrice }}</td>
+                </tr>
+                <tr>
+                    <td>Amount Paid:</td>
+                    <td class="text-right">Php {{ amountPaid }}</td>
+                </tr>
+                <tr>
+                    <td>Change Given:</td>
+                    <td class="text-right">Php {{ change }}</td>
+                </tr>
+            </table>
+        </div>
+
+        <a href="/" class="clickable clickable-center">Make a New Order</a>
+    </div>
+
+    
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<html>
+
+<head>
+    <title>Order Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <img src="https://raw.githubusercontent.com/ronnparcia/itprog-mp-icons/main/logo.png" class="header-logo">
+        foodcombo
+    </header>
+
+    <div class="container">
+
+        <h1 class="page-title">Assemble your meal!</h1>
+    
+        <form action="/checkout" method="post">
+            <!-- Mains -->
+            <div class="box">
+                <h2 class="box-title">Step 1:  Choose your <b>main</b> dish:</h2>
+                <table>
+                    <!-- Headings -->
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                    </tr>
+                    <!-- Rows -->
+                    {% for item in mainsList %}
+                        {% set itemID = item[0] %}
+                        {% set itemName = item[1] %}
+                        {% set itemPrice = item[2] %}
+                        {% set itemImageURL = item[3] %}
+                        <tr>
+                            <td><input type="radio" name="mainItem" value="{{ itemID }}" required> <img src="{{ itemImageURL }}" class="item-image"> {{ itemName }}</td>
+                            <td>Php {{ itemPrice }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                How many of this would you like to order? <input type="number" name="mainQty" value="1" min="1">
+            </div>
+            
+
+            <!-- Sides -->
+            <div class="box">
+                <h2 class="box-title">Step 2:  Choose your <b>side</b> dish:</h2>
+                <table>
+                    <!-- Headings -->
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                    </tr>
+                    <!-- Rows -->
+                    {% for item in sidesList %}
+                        {% set itemID = item[0] %}
+                        {% set itemName = item[1] %}
+                        {% set itemPrice = item[2] %}
+                        {% set itemImageURL = item[3] %}
+                        <tr>
+                            <td><input type="radio" name="sideItem" value="{{ itemID }}" required> <img src="{{ itemImageURL }}" class="item-image"> {{ itemName }}</td>
+                            <td>Php {{ itemPrice }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                How many of this would you like to order? <input type="number" name="sideQty" value="1" min="1">
+            </div>
+            
+
+            <!-- Drinks -->
+            <div class="box">
+                <h2 class="box-title">Step 3:  Choose your <b>drink</b>:</h2>
+                <table>
+                    <!-- Headings -->
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                    </tr>
+                    <!-- Rows -->
+                    {% for item in drinksList %}
+                        {% set itemID = item[0] %}
+                        {% set itemName = item[1] %}
+                        {% set itemPrice = item[2] %}
+                        {% set itemImageURL = item[3] %}
+                        <tr>
+                            <td><input type="radio" name="drinkItem" value="{{ itemID }}" required> <img src="{{ itemImageURL }}" class="item-image"> {{ itemName }}</td>
+                            <td>Php {{ itemPrice }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                How many of this would you like to order? <input type="number" name="drinkQty" value="1" min="1">
+            </div>
+            
+            <!-- Checkout Button -->
+            <input type="submit" value="Checkout" class="clickable clickable-center" id="checkout-btn">
+        </form>
+
+        <a href="{{ url_for('static', filename='ordercancelled.html') }}" class="clickable">Cancel Transaction</a>
+
+    </div>
+    
+    
+
+</body>
+
+</html>

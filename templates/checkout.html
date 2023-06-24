@@ -1,0 +1,184 @@
+<html>
+
+<head>
+    <title>Checkout</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='checkout.css') }}">
+    <style>
+        #price-breakdown, #payment-form {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="https://raw.githubusercontent.com/ronnparcia/itprog-mp-icons/main/logo.png" class="header-logo">
+        foodcombo
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">Checkout</h1>
+
+        <!-- Order -->
+        <div id="order-summary" class="box">
+            <h2 class="box-title">Please confirm your order:</h2>
+
+            <table>
+                <!-- Heading -->
+                <tr>
+                    <th>Category</th>
+                    <th>Item</th>
+                    <th class="text-right">Qty</th>
+                </tr>
+                <!-- Rows -->
+                <tr>
+                    <td>Main</td>
+                    <td>{{ mainItemName }}</td>
+                    <td class="text-right">{{ mainItemQty }}</td>
+                </tr>
+                <tr>
+                    <td>Side</td>
+                    <td>{{ sideItemName }}</td>
+                    <td class="text-right">{{ sideItemQty }}</td>
+                </tr>
+                <tr>
+                    <td>Drink</td>
+                    <td>{{ drinkItemName }}</td>
+                    <td class="text-right">{{ drinkItemQty }}</td>
+                </tr>
+            </table>
+
+            <button onclick="displayPriceBreakdown()" class="clickable">My orders are correct. Proceed to Payment.</button>
+        </div>
+
+        
+
+        <div id="price-breakdown" class="box">
+            <h2 class="box-title">Price Breakdown:</h2>
+
+            <!-- Price Brakdown -->
+            <table>
+                <!-- Heading -->
+                <tr>
+                    <th>Category</th>
+                    <th>Item</th>
+                    <th class="text-right">Qty</th>
+                    <th class="text-right">Price per Qty</th>
+                    <th class="text-right">Price</th>
+                </tr>
+
+                <!-- Main -->
+                <tr>
+                    <td>Mains</td>
+                    <td>{{ mainItemName }}</td>
+                    <td class="text-right">{{ mainItemQty }}</td>
+                    <td class="text-right">Php {{ mainItemPrice }}</td>
+                    {% set mainItemPriceTotal = mainItemPrice * mainItemQty %}
+                    <td class="text-right">Php {{ mainItemPriceTotal }}</td>
+                </tr>
+
+                <!-- Side -->
+                <tr>
+                    <td>Sides</td>
+                    <td>{{ sideItemName }}</td>
+                    <td class="text-right">{{ sideItemQty }}</td>
+                    <td class="text-right">Php {{ sideItemPrice }}</td>
+                    {% set sideItemPriceTotal = sideItemPrice * sideItemQty %}
+                    <td class="text-right">Php {{ sideItemPriceTotal }}</td>
+                </tr>
+
+                <!-- Drinks -->
+                <tr>
+                    <td>Drinks</td>
+                    <td>{{ drinkItemName }}</td>
+                    <td class="text-right">{{ drinkItemQty }}</td>
+                    <td class="text-right">Php {{ drinkItemPrice }}</td>
+                    {% set drinkItemPriceTotal = drinkItemPrice * drinkItemQty %}
+                    <td class="text-right">Php {{ drinkItemPriceTotal }}</td>
+                </tr>
+
+                <!-- Initial Total -->
+                <tr class="initial-total-row">
+                    <td colspan="4"><b>Total</b> {% if not(isCombo) %} (This is what you'll pay) {% endif %} :</td>
+                    <td class="text-right">Php {{ initialTotalPrice }}</td>
+                </tr>
+
+                <!-- Discount, if any -->
+                {% if isCombo %}
+                    <tr>
+                        <td colspan="4"><b>Discount</b>:</td>
+                        {% set discountPct100 = discountPct * 100 %}
+                        <td class="text-right">{{ discountPct100 }}% → Php {{ discount }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><b>Discounted Total</b> (This is what you'll pay):</td>
+                        <td class="text-right">Php {{ discountedTotalPrice }}</td>
+                    </tr>
+                {% endif %}
+            </table>
+
+            <button onclick="displayPaymentForm()" id="proceedToPaymentBtn" class="clickable clickable-center">Proceed to Payment</button>
+        </div>
+
+        
+
+        <div id="payment-form" class="box">
+            <h2 class="box-title">Payment:</h2>
+            <form action="/placeorder" method="post">
+
+                <table>
+                    <tr>
+                        <td>Your Name:</td>
+                        <td><input type="text" name="customerName" required></br></td>
+                    </tr>
+                    <tr>
+                        <td>Amount to Pay:</td>
+                        <td>
+                            <input type="number" name="amountPaid" min="{{ discountedTotalPrice }}" step="any" 
+                                oninvalid="this.setCustomValidity('Your payment is not enough.')"
+                                oninput="this.setCustomValidity('')"
+                                required></br>
+                        </td>
+                    </tr>
+                </table> 
+
+                <input type="hidden" name="mainItemID"           value="{{ mainItemID }}">
+                <input type="hidden" name="mainItemQty"          value="{{ mainItemQty }}">
+                <input type="hidden" name="sideItemID"           value="{{ sideItemID }}">
+                <input type="hidden" name="sideItemQty"          value="{{ sideItemQty }}">
+                <input type="hidden" name="drinkItemID"          value="{{ drinkItemID }}">
+                <input type="hidden" name="drinkItemQty"         value="{{ drinkItemQty }}">
+                <input type="hidden" name="initialTotalPrice"    value="{{ initialTotalPrice }}">
+                <input type="hidden" name="discount"             value="{{ discount }}">
+                <input type="hidden" name="discountedTotalPrice" value="{{ discountedTotalPrice }}">
+
+                <input type="submit" value="Place Order" class="clickable clickable-center">
+            </form>
+        </div>
+
+        <a href="{{ url_for('static', filename='ordercancelled.html') }}" class="clickable clickable-center">Cancel Transaction</a>
+    </div>
+    
+    
+
+    <!-- JavaScript -->
+    <script>
+        function displayPriceBreakdown() {
+            var orderSummary = document.getElementById("order-summary");
+            var priceBreakdown = document.getElementById("price-breakdown");
+
+            orderSummary.style.display = "none";
+            priceBreakdown.style.display = "block";
+        }
+
+        function displayPaymentForm() {
+            var paymentForm = document.getElementById("payment-form");
+            var proceedToPaymentBtn = document.getElementById("proceedToPaymentBtn");
+            paymentForm.style.display = "block";
+            proceedToPaymentBtn.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

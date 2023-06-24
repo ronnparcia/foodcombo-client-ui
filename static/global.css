@@ -1,0 +1,119 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: #fce7f3;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    color: white;
+    background-color: #be185d;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    box-shadow: 0 20px 25px -5px rgba(153, 0, 56, 0.15), 0 8px 10px -6px rgba(153, 0, 56, 0.15);
+}
+
+.header-logo {
+    margin-right: 10px;
+    width: 40px;
+    transform: translateY(-3px);
+}
+
+.container {
+    margin: 0 auto;
+    width: 550px;
+    padding: 30px 0;
+}
+
+table, th, td {
+    text-align: left;
+}
+
+th, td {
+    padding: 8px 12px;
+}
+
+th {
+    color: #be185d;
+}
+
+h1.page-title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #be185d;
+}
+
+div.box {
+    margin-bottom: 30px;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 20px 25px -5px rgba(153, 0, 56, 0.05), 0 8px 10px -6px rgba(153, 0, 56, 0.05);
+}
+
+h2.box-title {
+    margin-bottom: 10px;
+    font-weight: normal;
+    font-size: 20px;
+    color: #db2777;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #db2777;
+}
+
+.clickable {
+    display: block;
+    cursor: pointer;
+    background-color: #ba2362;
+    color: white;
+    padding: 10px 20px;
+    margin: 16px 0 0;
+    width: fit-content;
+    border-radius: 10px;
+    border: none;
+    font-weight: normal;
+    font-size: 14px;
+    text-decoration: none;
+    box-shadow: 0 10px 15px -3px rgba(153, 0, 56, 0.1), 0 4px 6px -4px rgba(153, 0, 56, 0.1);
+}
+
+.clickable:hover {
+    background-color: #ec4899;
+}
+
+.clickable-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th.text-right,
+td.text-right {
+    text-align: right;
+}
+
+input[type="text"],
+input[type="number"] {
+    padding: 4px 6px;
+    border: 2px solid #fbcfe8;
+    border-radius: 4px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border: 2px solid #db2777;
+}
