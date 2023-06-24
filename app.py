@@ -136,7 +136,7 @@ def placeorder():
             sideItemID = int(request.form['sideItemID'])
             sideItemQty = int(request.form['sideItemQty'])
             drinkItemID = int(request.form['drinkItemID'])
-            drinkItemQty =int(request.form['drinkItemQty'])
+            drinkItemQty = int(request.form['drinkItemQty'])
             initialTotalPrice = float(request.form['initialTotalPrice'])
             discount = float(request.form['discount'])
             discountedTotalPrice = float(request.form['discountedTotalPrice'])
