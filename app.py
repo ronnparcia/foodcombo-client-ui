@@ -85,6 +85,8 @@ def checkout():
             drinkItem = cursor.fetchone()
             drinkItemName = drinkItem[1]
             drinkItemPrice = drinkItem[2]
+
+            # TODO: Add conditional statement + separate display for when user enters quantity above the available inventory
             
             # Compute initial total price
             initialTotalPrice = (mainItemPrice * mainItemQty) + (sideItemPrice * sideItemQty) + (drinkItemPrice * drinkItemQty)
