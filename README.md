@@ -6,7 +6,7 @@ This project is implemented using Flask, Jinja, and MySQL.
 
 ## General Instructions
 
-Before running either the Phase 1 or Phase 2 application, import the `db_machineproject.sql` database to **phpMyAdmin**. Both Phase 1 and Phase 2 use the same database.
+Before running either the Phase 1 or Phase 2 application, import the [`db_machineproject.sql`](https://github.com/ronnparcia/itprog-phase2/blob/main/sql/db_machineproj.sql) database to **phpMyAdmin**. Both Phase 1 and Phase 2 use the same database.
 
 1. Install **Python**
 2. Using the command line, install the following Python packages using the  `pip`  package installer (built-in with Python). These are the frameworks, templating engines, and modules required for the application to run as intended:
