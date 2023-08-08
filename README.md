@@ -1,6 +1,6 @@
 # IT-PROG Project: Phase 1—Combo Meal Ordering System
 
-A client user interface for ordering a combo meal—main, side, and drink. The system offers discounts for certain combos, allows the user to review their order, save the order in the database, and compute for their change. The [system for the administrator](https://github.com/ronnparcia/itprog-phase2) is created as a separate applicaiton.
+A client user interface for ordering a combo meal—main, side, and drink. The system offers discounts for certain combos, allows the user to review their order, save the order in the database, and compute for their change. The [system for the administrator](https://github.com/ronnparcia/itprog-phase2) is created as a separate application.
 
 This project is implemented using Flask, Jinja, and MySQL.
 
