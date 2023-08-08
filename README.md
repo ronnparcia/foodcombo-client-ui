@@ -17,3 +17,18 @@ Before running either the Phase 1 or Phase 2 application, import the [`db_machin
 2. Enter the command `python app.py` or `python3 app.py` to run the application on the localhost.
 3. In your browser, enter the address `http://127.0.0.1:5000` to access the web application.
 
+## Screenshots
+
+#### Order Page
+![](https://i.imgur.com/SVOod1M.png)
+
+### Checkout
+![](https://i.imgur.com/P8ICSlR.png)
+
+### Order Confirmation
+![](https://i.imgur.com/5AvB5kE.png)
+
+
+
+
+
