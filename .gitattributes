@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Avoid HTML as the top language
+*.html linguist-detectable=false
