@@ -1,12 +1,12 @@
-# IT-PROG Project: Phase 1—Combo Meal Ordering System
+# Y2 T3 College Project: Phase 1—Combo Meal Ordering System
 
-A client user interface for ordering a combo meal—main, side, and drink. The system offers discounts for certain combos, allows the user to review their order, save the order in the database, and compute for their change. The [system for the administrator](https://github.com/ronnparcia/itprog-phase2) is created as a separate application.
+A client user interface for ordering a combo meal—main, side, and drink. The system offers discounts for certain combos, allows the user to review their order, save the order in the database, and compute for their change. The [system for the administrator](https://github.com/ronnparcia/foodcombo-admin-ui) is created as a separate application.
 
 This project is implemented using Flask, Jinja, and MySQL.
 
 ## General Instructions
 
-Before running either the Phase 1 or Phase 2 application, import the [`db_machineproject.sql`](https://github.com/ronnparcia/itprog-phase2/blob/main/sql/db_machineproj.sql) database to **phpMyAdmin**. Both Phase 1 and Phase 2 use the same database.
+Before running either the Phase 1 or Phase 2 application, import the [`db_machineproject.sql`](https://github.com/ronnparcia/foodcombo-admin-ui/blob/main/sql/db_machineproj.sql) database to **phpMyAdmin**. Both Phase 1 and Phase 2 use the same database.
 
 1. Install **Python**
 2. Using the command line, install the following Python packages using the  `pip`  package installer (built-in with Python). These are the frameworks, templating engines, and modules required for the application to run as intended:
