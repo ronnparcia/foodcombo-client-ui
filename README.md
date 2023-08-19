@@ -1,6 +1,6 @@
 # Y2 T3 College Project: Phase 1—Combo Meal Ordering System
 
-A client user interface for ordering a combo meal—main, side, and drink. The system offers discounts for certain combos, allows the user to review their order, save the order in the database, and compute for their change. The [system for the administrator](https://github.com/ronnparcia/foodcombo-admin-ui) is created as a separate application.
+A client user interface for ordering a combo meal—main, side, and drink. The system offers discounts for certain combos, allows the user to review their order, save the order in the database, and compute for their change. The [system for the administrator](https://github.com/ronnparcia/foodcombo-admin-ui) (Phase 2) is created as a separate application.
 
 This project is implemented using Flask, Jinja, and MySQL.
 
